@@ -1,10 +1,28 @@
-# Multi-Region Microservices Platform
+# AWS Microservices Platform (S3, ALB, EC2, Lambda)
 
 ## Architecture
 
-```
-User → S3 (Frontend) → ALB → /users → EC2 (API)
-                          → /auth → Lambda (Auth)
+```mermaid
+graph TB
+    subgraph "AWS Cloud"
+        S3["S3 Bucket<br/>(Static Website)"]
+        ALB["Application Load Balancer"]
+        
+        subgraph "Target Groups"
+            TG1["ashish-auth-tg<br/>(Lambda)"]
+            TG2["ashish-api-tg<br/>(EC2)"]
+        end
+        
+        Lambda["ashish-auth-function<br/>(Node.js 18)"]
+        EC2["EC2 t3.micro<br/>(Node.js API :3000)"]
+    end
+    
+    User((User)) --> S3
+    S3 --> ALB
+    ALB -->|/auth*| TG1
+    ALB -->|/users*| TG2
+    TG1 --> Lambda
+    TG2 --> EC2
 ```
 
 ---
@@ -240,25 +258,4 @@ Open S3 website endpoint in browser:
   ![Demo 1](demo1.png)
   ![Demo 2](demo2.png)
 
----
-
-## Quick Reference
-
-| Component | Key Setting |
-|-----------|-------------|
-| S3 | Static hosting ON, CORS + Bucket Policy |
-| Lambda | Content-Type header, ALB permission |
-| EC2 | Node.js on port 3000 via user data |
-| ALB | Cross-zone, sticky sessions |
-| Routing | `/auth*` → Lambda, `/users*` → EC2 |
-
----
-
-## Troubleshooting
-
-| Issue | Solution |
-|-------|----------|
-| Auth returns download file | Add `Content-Type: application/json` in Lambda headers |
-| Double slash in URL | Remove trailing slash from ALB variable |
-| Auth button not working | Check listener rules have `/auth*` path |
-| Can't resolve ALB DNS | Verify ALB is in same region |
+## 
