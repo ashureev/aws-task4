@@ -245,6 +245,9 @@ nohup node index.js > /tmp/node.log 2>&1 &
    ```
 3. Upload to S3: `aws s3 cp index.html s3://your-bucket/`
 
+   
+   Note: const ALB = "http://ashish-app-alb-616223717.us-east-2.elb.amazonaws.com";  (no slash at end)
+
 ---
 
 ## Final Test
