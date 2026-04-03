@@ -57,13 +57,13 @@ User → S3 (Frontend) → ALB → /users → EC2 (API)
 
 ### 📸 Screenshots 
 - [x] S3 bucket created (show name)
-  ![S3 bucket created](./s3.png)
+  ![S3 bucket created](s3.png)
 - [x] Static website hosting enabled (show endpoint URL)
-  ![Static website hosting](./s3-static.png)
+  ![Static website hosting](s3-static.png)
 - [x] CORS configuration saved
-  ![CORS configuration](./s3-cors.png)
+  ![CORS configuration](s3-cors.png)
 - [x] Bucket policy applied
-  ![Bucket policy](./s3-bucket-policy.png)
+  ![Bucket policy](s3-bucket-policy.png)
 
 ---
 
@@ -104,13 +104,13 @@ export const handler = async (event) => {
 
 ### 📸 Screenshots 
 - [x] Lambda function created
-  ![Lambda function](./lambda.png)
+  ![Lambda function](lambda.png)
 - [x] Code deployed (show handler)
-  ![Code deployed](./lambda-code.png)
+  ![Code deployed](lambda-code.png)
 - [x] Permission added to resource-based policy
-  ![Permission added](./lambda-permission.png)
+  ![Permission added](lambda-permission.png)
 - [x] Test successful (shows token response)
-  ![Test successful](./lambda-test.png)
+  ![Test successful](lambda-test.png)
 
 ---
 
@@ -157,10 +157,10 @@ nohup node index.js > /tmp/node.log 2>&1 &
 
 ### 📸 Screenshots 
 - [x] Instance running (show Public IP)
-  ![Instance running](./ec2-running.png)
+  ![Instance running](ec2-running.png)
   
 - [x] Security group rules
-  ![Security group rules](./ec2-sg-rule.png)
+  ![Security group rules](ec2-sg-rule.png)
   
   
 
@@ -203,16 +203,16 @@ nohup node index.js > /tmp/node.log 2>&1 &
 
 ### 📸 Screenshots 
 - [x] Target groups created (show both EC2 and Lambda)
-  ![Target groups created](./tg-created.png)
+  ![Target groups created](tg-created.png)
   
 - [x] ALB created (show DNS name)
-  ![ALB created](./alb-created.png)
+  ![ALB created](alb-created.png)
   
 - [x] Listener rules configured (show path routing)
-  ![Listener rules](./listener-rules.png)
+  ![Listener rules](listener-rules.png)
   
 - [x] Cross-zone enabled
-  ![Cross-zone enabled](./crosszone-alb.png)
+  ![Cross-zone enabled](crosszone-alb.png)
   
   
 
@@ -237,8 +237,8 @@ Open S3 website endpoint in browser:
 
 ### 📸 Screenshots 
 - [x] Final working app (both buttons return JSON)
-  ![Demo 1](./demo1.png)
-  ![Demo 2](./demo2.png)
+  ![Demo 1](demo1.png)
+  ![Demo 2](demo2.png)
 
 ---
 
