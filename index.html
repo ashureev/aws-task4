@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyApp Microservices</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+
+    button {
+      padding: 10px 16px;
+      margin: 10px 10px 10px 0;
+      cursor: pointer;
+    }
+
+    #output {
+      margin-top: 20px;
+      padding: 12px;
+      background: #f4f4f4;
+      border: 1px solid #ddd;
+      min-height: 24px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h2>MyApp Microservices Demo</h2>
+
+  <button onclick="getUsers()">Call Users API</button>
+  <button onclick="getAuth()">Call Auth Service</button>
+
+  <div id="output">Response appears here</div>
+
+  <script>
+    const ALB = "http://ashish-app-alb-616223717.us-east-2.elb.amazonaws.com";
+
+    function getUsers() {
+      fetch(ALB + "/users")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("output").textContent = data;
+        })
+        .catch((err) => {
+          document.getElementById("output").textContent = err;
+        });
+    }
+
+    function getAuth() {
+      fetch(ALB + "/auth")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("output").textContent = data;
+        })
+        .catch((err) => {
+          document.getElementById("output").textContent = err;
+        });
+    }
+  </script>
+</body>
+</html>
