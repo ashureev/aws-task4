@@ -1,4 +1,4 @@
-# AWS Microservices Console Setup Guide
+# Multi-Region Microservices Platform
 
 ## Architecture
 
@@ -55,11 +55,15 @@ User → S3 (Frontend) → ALB → /users → EC2 (API)
 }
 ```
 
-### 📸 Screenshots to Keep
-- [ ] S3 bucket created (show name)
-- [ ] Static website hosting enabled (show endpoint URL)
-- [ ] CORS configuration saved
-- [ ] Bucket policy applied
+### 📸 Screenshots 
+- [x] S3 bucket created (show name)
+  ![S3 bucket created](./s3.png)
+- [x] Static website hosting enabled (show endpoint URL)
+  ![Static website hosting](./s3-static.png)
+- [x] CORS configuration saved
+  ![CORS configuration](./s3-cors.png)
+- [x] Bucket policy applied
+  ![Bucket policy](./s3-bucket-policy.png)
 
 ---
 
@@ -98,11 +102,15 @@ export const handler = async (event) => {
 ### 4. Test
 - Click **Test** → Invoke → Verify JSON response
 
-### 📸 Screenshots to Keep
-- [ ] Lambda function created
-- [ ] Code deployed (show handler)
-- [ ] Permission added to resource-based policy
-- [ ] Test successful (shows token response)
+### 📸 Screenshots 
+- [x] Lambda function created
+  ![Lambda function](./lambda.png)
+- [x] Code deployed (show handler)
+  ![Code deployed](./lambda-code.png)
+- [x] Permission added to resource-based policy
+  ![Permission added](./lambda-permission.png)
+- [x] Test successful (shows token response)
+  ![Test successful](./lambda-test.png)
 
 ---
 
@@ -147,10 +155,14 @@ nohup node index.js > /tmp/node.log 2>&1 &
 - Wait 2-3 minutes
 - Test: `http://<PUBLIC-IP>:3000` → Should return JSON
 
-### 📸 Screenshots to Keep
-- [ ] Instance running (show Public IP)
-- [ ] Security group rules
-- [ ] API test from browser (shows users JSON)
+### 📸 Screenshots 
+- [x] Instance running (show Public IP)
+  ![Instance running](./ec2-running.png)
+  
+- [x] Security group rules
+  ![Security group rules](./ec2-sg-rule.png)
+  
+  
 
 ---
 
@@ -189,12 +201,20 @@ nohup node index.js > /tmp/node.log 2>&1 &
 - ALB → Attributes → Enable cross-zone load balancing
 - Target group `ashish-api-tg` → Attributes → Edit → Enable stickiness
 
-### 📸 Screenshots to Keep
-- [ ] Target groups created (show both EC2 and Lambda)
-- [ ] ALB created (show DNS name)
-- [ ] Listener rules configured (show path routing)
-- [ ] Cross-zone enabled
-- [ ] Sticky sessions enabled
+### 📸 Screenshots 
+- [x] Target groups created (show both EC2 and Lambda)
+  ![Target groups created](./tg-created.png)
+  
+- [x] ALB created (show DNS name)
+  ![ALB created](./alb-created.png)
+  
+- [x] Listener rules configured (show path routing)
+  ![Listener rules](./listener-rules.png)
+  
+- [x] Cross-zone enabled
+  ![Cross-zone enabled](./crosszone-alb.png)
+  
+  
 
 ---
 
@@ -207,10 +227,6 @@ nohup node index.js > /tmp/node.log 2>&1 &
    ```
 3. Upload to S3: `aws s3 cp index.html s3://your-bucket/`
 
-### 📸 Screenshots to Keep
-- [ ] ALB DNS name copied
-- [ ] Updated index.html in S3
-
 ---
 
 ## Final Test
@@ -219,8 +235,10 @@ Open S3 website endpoint in browser:
 1. Click **Call Users API** → `{"users":["user1","user2","user3"]}`
 2. Click **Call Auth Service** → `{"token":"dummy-jwt-token-12345","user":"demo-user"}`
 
-### 📸 Screenshots to Keep
-- [ ] Final working app (both buttons return JSON)
+### 📸 Screenshots 
+- [x] Final working app (both buttons return JSON)
+  ![Demo 1](./demo1.png)
+  ![Demo 2](./demo2.png)
 
 ---
 
